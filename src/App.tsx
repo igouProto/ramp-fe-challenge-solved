@@ -79,6 +79,8 @@ export function App() {
           <Transactions transactions={transactions} />
 
           {transactions !== null && (
+            // bug 6 solution (fixed): hide the button as instructed in readme
+            (paginatedTransactions?.nextPage !== null && !transactionsByEmployee) && (
             <button
               className="RampButton"
               // bug 6 solution: also disable the button when: there are no more pages, is fetching data, no paginatedTransactions
@@ -87,6 +89,7 @@ export function App() {
                 await loadAllTransactions()
               }}
             >View More</button>
+            )
           )}
         </div>
       </main>
